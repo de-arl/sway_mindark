@@ -1,0 +1,35 @@
+#!/bin/bash
+
+WALL=~/.config/sway/pictures/hands_off.png
+
+
+export CHOICE=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "At your command!" << EOF
+Exit sway!
+Lock screen!
+Sleep!
+Lock and Sleep!
+Shutdown!
+Reboot!
+EOF`
+
+
+if [ "$CHOICE" = "Lock screen!" ]
+then
+swaylock -f -i $WALL
+elif [ "$CHOICE" = "Sleep!" ]
+then
+systemctl suspend-then-hibernate
+elif [ "$CHOICE" = "Lock and Sleep!" ]
+then
+swaylock -f -i $WALL && systemctl suspend-then-hibernate
+elif [ "$CHOICE" = "Shutdown!" ]
+then
+systemctl poweroff
+elif [ "$CHOICE" = "Exit sway!" ]
+then
+swaymsg exit
+elif [ "$CHOICE" = "Reboot!" ] 
+then
+systemctl reboot
+fi
+exit 0
