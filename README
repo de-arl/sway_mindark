@@ -1,6 +1,6 @@
 ### README for sway_mindark theme by arl
 
-The mindark theme is a minimalistic dark theme. It provides an energy-saving, elegant and destruction free environment.
+The mindark theme is a minimalistic dark theme. It provides an energy-saving, elegant and destraction free environment.
 
 Copy the folder "sway" to ~/.config/sway and edit the config files and scripts according to your setup.
 
@@ -15,6 +15,6 @@ iw, pamixer, awk for the status command
 pactl and playerctl for media-keybinds (disabled by default)
 
 
-If not by default, set you terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
+If not by default, set your terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
 
 Munich, March 2020, arl
