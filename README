@@ -14,6 +14,7 @@ grim, imv, jq, slurp for screenshots
 iw, pamixer, awk for the status command
 pactl and playerctl for media-keybinds (disabled by default)
 
+Recommended file-manager is nnn.
 
 If not by default, set you terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
 
