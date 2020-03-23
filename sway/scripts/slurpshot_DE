@@ -1,5 +1,5 @@
 #!/bin/bash
-# Simple screenshot script, dependencies: grim, bemenu, imv, jq, slurp
+# Simple screenshot script, dependencies: grim, bemenu, imv, jq
 # Choose directory to save screenshots and viewer
 
 SHOTPATH=~/Bilder/screenshots
@@ -8,26 +8,25 @@ VIEWER=/usr/bin/imv-wayland
 WINDOWS=`swaymsg -t get_tree | jq '.. | (.nodes? // empty)[] | select(.visible and .pid) | "\(.app_id) \(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"'`
 FOCUSED=`swaymsg -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused and .pid) | .rect | "\(.x),\(.y) \(.width)x\(.height)"'`
 
-CHOICE=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "Please select screenshot area:" << EOF
-Fullscreen
-Selection
-Focus
+CHOICE=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "Bitte Bereich wählen:" << EOF
+Vollbild
+Auswahl
+Fokus
 $WINDOWS
 EOF`
 
 FILENAME="${SHOTPATH}/screenshot-$(date +'%Y-%m-%d-%H%M%S.png')"
 GRID=\"$(echo $CHOICE | awk ' {print $2,$3} ')
 
-# Name printed when viewing screenshot, adjust if you edit FILENAME
 FILENAME_SHORT=${FILENAME: -32}
 
-if [ "$CHOICE" = Fullscreen ]
+if [ "$CHOICE" = Vollbild ]
 then
     grim "$FILENAME"
-elif [ "$CHOICE" = Selection ]
+elif [ "$CHOICE" = Auswahl ]
 then
     grim -g "$(slurp)" "$FILENAME"
-elif [ "$CHOICE" = Focus ]
+elif [ "$CHOICE" = Fokus ]
 then
     grim -g "$(eval echo $FOCUSED)" "$FILENAME"
 else
@@ -35,31 +34,31 @@ else
 fi
 
 
-WAHL=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "Screenshot taken" << EOF
-View
-Save
-Discard
+WAHL=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "Screenshot erstellt" << EOF
+Öffnen
+Speichern
+Verwerfen
 EOF`
 
 
-if [ $WAHL = View ]
-then	
+if [ $WAHL = Öffnen ]
+then
 	$VIEWER $FILENAME &
 	WAHL2=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000  -p "${FILENAME_SHORT}"<< EOF
-	Save
-	Discard
+	Speichern
+	Verwerfen
 EOF`
-	if [ $WAHL2 = Discard ]
+	if [ $WAHL2 = Verwerfen ]
 	then
-	        rm $FILENAME &
-	        PID_VIEWER=$(pidof -s ${VIEWER})
-	        kill -9 ${PID_VIEWER}
+		PID_VIEWER=$(pidof -s ${VIEWER}) 
+		rm $FILENAME &
+		kill -9 ${PID_VIEWER}
 	else
-		PID_VIEWER=$(pidof -s ${VIEWER})
+		PID_VIEWER=$(pidof -s ${VIEWER}) 
 		kill -9 ${PID_VIEWER}
 		true
 	fi
-elif [ $WAHL = Discard ]
+elif [ $WAHL = Verwerfen ]
 then
 	rm $FILENAME
 else

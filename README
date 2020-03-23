@@ -19,3 +19,9 @@ Recommended file-manager is nnn.
 If not by default, set your terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
 
 Munich, March 2020, arl
+
+
+Current version 0.2
+Changelog
+v0.2 
+-added german version of scripts, change bindings to use them

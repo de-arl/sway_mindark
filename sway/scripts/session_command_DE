@@ -1,0 +1,34 @@
+#!/bin/bash
+
+WALL=/home/arl/Pictures/selection/wallpaper.JPG
+
+export CHOICE=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "Sie wünschen?" << EOF
+Sway beenden!
+Bildschirm sperren!
+Ruhezustand!
+Sperren und Ruhezustand!
+Herunterfahren!
+Neustart!
+EOF`
+
+
+if [ "$CHOICE" = "Bildschirm sperren!" ]
+then
+swaylock -f -i $WALL
+elif [ "$CHOICE" = "Ruhezustand!" ]
+then
+systemctl suspend-then-hibernate
+elif [ "$CHOICE" = "Sperren und Ruhezustand!" ]
+then
+swaylock -f -i $WALL && systemctl suspend-then-hibernate
+elif [ "$CHOICE" = "Herunterfahren!" ]
+then
+systemctl poweroff
+elif [ "$CHOICE" = "Sway beenden!" ]
+then
+swaymsg exit
+elif [ "$CHOICE" = "Neustart!" ] 
+then
+systemctl reboot
+fi
+
