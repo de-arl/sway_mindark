@@ -16,7 +16,7 @@ grim, imv, jq, slurp for screenshots
 iw, pamixer, awk for the status command
 pactl and playerctl for media-keybinds (disabled by default)
 
-Recommended file-manager is nnn, it's fast. Recommended for pdf-viewer is llpp (toggle dark with -I), it's fast.
+Recommended file-manager is nnn, it's fast. Recommended for pdf-viewer is llpp (toggle dark with -I), it's fast. If you need a translator, recommended is the google translate shell (https://www.soimort.org/translate-shell/). To edit tex try glartex.
 
 If not by default, set your terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
 
