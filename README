@@ -2,7 +2,7 @@
 
 The mindark theme is a minimalistic dark theme. It provides an energy-saving, elegant and destraction free environment.
 
-The theme sets the design and includes a well integrated application launcher (default mod+d) sceenshot menu(default F12), a session manager (default mod+shift+e) and a statusbar (displayed when mod is pressed).
+The theme sets the design and includes a well integrated application launcher (default mod+d), a screenshot menu that enables taking screenshots of certain containers (default F12), a session manager (default mod+shift+e) and a statusbar (displayed when mod is pressed).
 
 Copy the folder "sway" to ~/.config/sway and edit the config files and scripts according to your setup.
 
@@ -16,7 +16,7 @@ grim, imv, jq, slurp for screenshots
 iw, pamixer, awk for the status command
 pactl and playerctl for media-keybinds (disabled by default)
 
-Recommended file-manager is nnn.
+Recommended file-manager is nnn, it's fast. Recommended for pdf-viewer is llpp (toggle dark with -I), it's fast.
 
 If not by default, set your terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
 
