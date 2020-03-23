@@ -2,6 +2,8 @@
 
 The mindark theme is a minimalistic dark theme. It provides an energy-saving, elegant and destraction free environment.
 
+The theme sets the design and includes a well integrated application launcher (default mod+d) sceenshot menu(default F12), a session manager (default mod+shift+e) and a statusbar (displayed when mod is pressed).
+
 Copy the folder "sway" to ~/.config/sway and edit the config files and scripts according to your setup.
 
 See through all files and edit according to your setup. It's all explained. The default is a desktop PC with one display called HDMI-A-1 and all dependencies installed, that can sleep-and-hibernate. You can set the theme to portable devices.
