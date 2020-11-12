@@ -3,7 +3,7 @@
 WALL=~/.config/sway/pictures/hands_off.png
 
 
-export CHOICE=`bemenu -b -H 29 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "At your command!" << EOF
+export CHOICE=`bemenu -b -H 11 --tf=#ffffff --ff=#ffffff --hf=#4c7899 --fb=#000000 --tb=#000000 --nb=#000000 --hb=#000000 -p "At your command!" << EOF
 Exit sway!
 Lock screen!
 Sleep!
