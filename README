@@ -16,14 +16,18 @@ grim, imv, jq, slurp for screenshots
 iw, pamixer, awk for the status command
 pactl and playerctl for media-keybinds (disabled by default)
 
-Recommended file-manager is nnn, it's fast. Recommended for pdf-viewer is llpp (toggle dark with -I), it's fast. If you need a translator, recommended is the google translate shell (https://www.soimort.org/translate-shell/). To edit tex try glartex.
+Recommended file-manager is nnn, it's fast. Recommended for pdf-viewer is zathura, it's fast. If you need a translator, recommended is the google translate shell (https://www.soimort.org/translate-shell/). To edit tex try glartex.
 
 If not by default, set your terminal background to solid black. The theme also looks good with transparent terminals and a nice wallpaper.
 
-Munich, March 2020, arl
+Munich, Feb 2021, arl
 
 
-Current version 0.2
+Current version 0.3
 Changelog
+v0.3
+-graphical adaption to new bemenu
+-simplified default swaybar (see outcommented possibilities)
+-print option in screenshot script
 v0.2 
 -added german version of scripts, change bindings to use them

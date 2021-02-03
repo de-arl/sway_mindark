@@ -8,11 +8,17 @@ WIFI_NAME="wlan0"
 PC_TYPE="desktop"
 
 # Battery
-bat=$(acpi -b | awk '{print $1,$3,$4,$5,$6,$7}')
+#bat=$(acpi -b | awk '{print $1,$3,$4,$5,$6,$7}')
 
 # Network
-net=$(iw dev ${WIFI_NAME} link | grep SSID | awk -F ' ' '{print $2}')
-sig=$(iw dev ${WIFI_NAME} link | grep signal |awk -F ' ' '{print $2,$3}')
+#net=$(iw dev ${WIFI_NAME} link | grep SSID | awk -F ' ' '{print $2}')
+#sig=$(iw dev ${WIFI_NAME} link | grep signal |awk -F ' ' '{print $2,$3}')
+# Current session
+TX=$(( $(cat /sys/class/net/${IDEV}/statistics/tx_bytes) / 1000000 ))
+RX=$(( $(cat /sys/class/net/${IDEV}/statistics/rx_bytes) / 1000000 ))
+# Needs vnstat
+#TXT=$(($(vnstat --json --limit 1 | jq '.interfaces |.[]| select(.name=="enp4s0")|.traffic|.total|.tx') / 1000000000 ))
+#RXT=$(($(vnstat --json --limit 1 | jq '.interfaces |.[]| select(.name=="enp4s0")|.traffic|.total|.rx') / 1000000000 ))
 
 # Volume
 vol=$(pamixer --get-volume)
@@ -35,23 +41,18 @@ mn415=$(awk "BEGIN {printf \"%.f\n\", 100*$mn15/${CORE_COUNT}}")
 # Uptime 
 upt=$(awk '{printf("%dd %02dh %02dm\n",($1/60/60/24),($1/60/60%24),($1/60%60))}' /proc/uptime)
 
-# Date and time
-dat=$(date | awk ' {print $1,$2,$3,$6}')
-hms=$(date | awk ' {print $4}')
-hor=$(echo $hms | awk -F ':' '{print $1}' )
-min=$(echo $hms | awk -F ':' '{print $2}' )
-tiz=$(date | awk ' {print $5}')
 
 # Brightness
-br1=$(cat /sys/class/backlight/intel_backlight/actual_brightness)
-brm=$(cat /sys/class/backlight/intel_backlight/max_brightness)
-brp=$(awk " BEGIN { printf \"%.f\n\", $br1/$brm*100 } ")
+#br1=$(cat /sys/class/backlight/intel_backlight/actual_brightness)
+#brm=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+#brp=$(awk " BEGIN { printf \"%.f\n\", $br1/$brm*100 } ")
 
 # Print status-bar
 
-if [ $PC_TYPE = "desktop" ]
-	then
-		echo  "Up $upt | CPU $mn401%-$mn410%-$mn415% | RAM $ram% | Vol $vol% |  $dat | $hor:$min $tiz    "
-	else
-		echo  "Up $upt | CPU $mn401%-$mn410%-$mn415% | RAM $ram% | wlan $net $sig | Vol $vol% | Brightness $brp% | $bat| $dat | $hor:$min $tiz"
+#if [ $PC_TYPE = "desktop" ]
+#	then
+#		echo  "Up $upt | CPU $mn401%-$mn410%-$mn415% | RAM $ram% | Vol $vol% |  $dat | $hor:$min $tiz    "
+#	else
+#		echo  "Up $upt | CPU $mn401%-$mn410%-$mn415% | RAM $ram% | wlan $net $sig | Vol $vol% | Brightness $brp% | $bat| $dat | $hor:$min $tiz"
 fi
+echo  "Up $upt | tx/rx [Mb]: $TX/$RX | CPU $mn401%-$mn410%-$mn415% | RAM $ram% | Vol $vol% |  $(date +"%a %d. %b %Y %H:%M")    "
